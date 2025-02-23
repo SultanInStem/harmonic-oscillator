@@ -1,11 +1,11 @@
 import pygame 
 import sys 
-
+from config import SCREEN_SIZE
 class Canvas: 
     def __init__(self): 
         pygame.init()
         self.running = True
-        self.screen = pygame.display.set_mode()
+        self.screen = pygame.display.set_mode(SCREEN_SIZE)
 
     def handle_events(self): 
         for event in pygame.event.get(): 
