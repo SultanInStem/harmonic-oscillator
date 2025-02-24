@@ -38,7 +38,7 @@ class Canvas:
             1
         )
 
-        pygame.draw.circle(self.screen, (255,0,0), to_screen((0,0)), 10,1)
+        pygame.draw.circle(self.screen, (255,0,0), to_screen((0,0)), 10,1) # equilibrium point
 
         pygame.display.flip()
         self.clock.tick(self.fps)
