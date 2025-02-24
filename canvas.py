@@ -14,7 +14,7 @@ class Canvas:
         self.fps = 60
         self.block_coordinate_origin = (-500,-200)
 
-        self.oscillator = Oscillator((0,0), 20, 1)
+        self.oscillator = Oscillator((0,0), 20, 1, self.block_coordinate_origin, (100,100))
 
     def handle_events(self): 
         for event in pygame.event.get(): 
