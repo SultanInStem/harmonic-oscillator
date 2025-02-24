@@ -2,6 +2,7 @@ import pygame
 import sys 
 from config import SCREEN_SIZE
 from globals import to_screen, to_math
+from oscillator import Oscillator
 class Canvas: 
     def __init__(self): 
         pygame.init()
@@ -13,12 +14,14 @@ class Canvas:
         self.fps = 60
         self.block_coordinate_origin = (-500,-200)
 
+        self.oscillator = Oscillator((0,0), 20, 1)
+
     def handle_events(self): 
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT: 
                 self.running = False
-    def update(self): 
-        pass 
+    def update(self):
+        self.oscillator.move() 
     def render(self): 
         self.screen.fill((0,0,0))
 
