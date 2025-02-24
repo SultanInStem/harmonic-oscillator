@@ -34,9 +34,11 @@ class Canvas:
             self.screen, 
             (255,255,255), 
             to_screen(self.block_coordinate_origin), 
-            to_screen((500,self.block_coordinate_origin[1])), 
+            to_screen((600,self.block_coordinate_origin[1])), 
             1
         )
+
+        pygame.draw.circle(self.screen, (255,0,0), to_screen((0,0)), 10,1)
 
         pygame.display.flip()
         self.clock.tick(self.fps)
