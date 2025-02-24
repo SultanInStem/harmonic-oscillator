@@ -20,6 +20,9 @@ class Canvas:
     def render(self): 
         self.screen.fill((0,0,0))
 
+
+        pygame.draw.line(self.screen, (255,255,255), ())
+
         pygame.display.flip()
         self.clock.tick(self.fps)
 
