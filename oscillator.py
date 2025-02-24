@@ -8,11 +8,11 @@ class Oscillator:
 
 
     def draw(self, screen): 
-        pass 
+        pygame.draw.rect(screen, (255,0,0),(100,100,100,100),0)
 
     def move(self): 
         pass 
-    
+
 
 
 

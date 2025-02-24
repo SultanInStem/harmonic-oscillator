@@ -25,6 +25,8 @@ class Canvas:
     def render(self): 
         self.screen.fill((0,0,0))
 
+        self.oscillator.draw(self.screen)
+
         ### Drawing coordinate for the block-spring system 
         pygame.draw.line(
             self.screen, 
