@@ -12,12 +12,11 @@ class Oscillator:
 
 
     def draw(self, screen): 
-
         ### Drawing the block 
-
         screen_x = to_screen(self.pos)[0]
         screen_y = to_screen(self.pos)[1]
         pygame.draw.rect(screen, (255,0,0),(screen_x, screen_y, self.block_size[0], self.block_size[1]), 0)
+        
 
         ### Drawing the spring 
 
