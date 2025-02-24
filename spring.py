@@ -2,21 +2,19 @@ import math
 import pygame
 from globals import to_math, to_screen
 class Spring: 
-    def __init__(self, amp, wave_num, spring_constant, start_pos, end_pos):
+    def __init__(self, amp, t, spring_constant, start_pos, end_pos):
         self.amp = amp 
         self.k = spring_constant
-        self.wave_num = wave_num 
+        self.t = t
         self.start_pos = start_pos 
         self.end_pos = end_pos 
+        # self.length_range = int(math.sqrt((end_pos[0] - start_pos[0])**2 + (end_pos[1] - start_pos[1])**2))
+
 
     def draw(self, screen):
-        length = self.k * math.pi / self.wave_num
-        t = 0 
-        while(t < length*500): 
-            t += 0.1 
-            x = self.start_pos[0] + t  
-            y = self.amp * math.sin(self.wave_num * x)
-            pygame.draw.circle(screen, (0,200,50), to_screen((x,y)), 1, 0)
+        for i in range(0, 100):
 
-    def update(self): 
-        pass
+            pygame.draw.circle(screen, (255,255,255), to_screen((i, 1000*math.sin(self.t * i))), 1, 0)
+
+
+     

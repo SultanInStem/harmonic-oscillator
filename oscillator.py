@@ -10,7 +10,7 @@ class Oscillator:
         self.origin = origin
         self.block_size = size 
         self.pos = (equilibrium_pos[0], origin[1] + self.block_size[1])
-        self.spring = Spring(1, 8, 2, self.origin, self.pos)
+        # self.spring = Spring(100, 8, 2, self.origin, self.pos)
 
     def draw(self, screen): 
         ### Drawing the block 
@@ -20,8 +20,7 @@ class Oscillator:
         
 
         ### Drawing the spring
-        self.spring.draw(screen)
-      
+        # self.spring.draw(screen)
 
     def move(self): 
         pass 
