@@ -3,7 +3,6 @@ import sys
 from config import SCREEN_SIZE
 from globals import to_screen, to_math
 from oscillator import Oscillator
-from spring import Spring 
 import math
 class Canvas: 
     def __init__(self): 
@@ -19,8 +18,6 @@ class Canvas:
 
         self.oscillator = Oscillator((0,0), 20, 1, self.block_coordinate_origin, (100,100))
 
-        self.spring = Spring(10, math.pi * 2, 5, (0,0), (100,0))
-        self.t = 20
 
     def handle_events(self): 
         for event in pygame.event.get(): 
@@ -32,17 +29,6 @@ class Canvas:
         self.screen.fill((0,0,0))
 
         self.oscillator.draw(self.screen)
-
-        x = 0
-        A = 100
-        while (x < 400): 
-            x += 1
-            y = A * math.sin(self.t*self.PI*x)
-            pygame.draw.circle(self.screen, (255,255,255), to_screen((x,y)), 2,0)
-        self.t += 0.00001
-
-        if self.t >= 40: 
-            self.t = 20
 
         ### Drawing coordinate for the block-spring system 
         pygame.draw.line(
