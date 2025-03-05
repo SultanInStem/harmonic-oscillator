@@ -25,10 +25,14 @@ class Oscillator:
 
     def is_clicked(self, point): 
         p = to_math(point)
-        rect = pygame.Rect(self.pos[0], self.pos[1], self.block_size[0], self.block_size[1])
-        if rect.collidepoint(p[0],p[1]): 
+        pos = self.pos 
+        size = self.block_size
+        print('triger')
+        if pos[0] <= p[0] <= pos[0] + size[0] and pos[1] <= p[1] <= pos[1] + size[1]:
+            print('true')
             return True
-        return False
+        return False 
+
 
 
 
