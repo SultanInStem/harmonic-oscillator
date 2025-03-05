@@ -19,8 +19,18 @@ class Oscillator:
     def move(self): 
         pass 
 
-    def set_pos(self): 
-        pass
+    def set_pos(self, point):
+        p = to_math(point)
+        self.pos = (p[0], self.origin[1] + self.block_size[1]) 
+
+    def is_clicked(self, point): 
+        p = to_math(point)
+        rect = pygame.Rect(self.pos[0], self.pos[1], self.block_size[0], self.block_size[1])
+        if rect.collidepoint(p[0],p[1]): 
+            return True
+        return False
+
+
 
 
 

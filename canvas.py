@@ -3,19 +3,20 @@ import sys
 from config import SCREEN_SIZE
 from globals import to_screen, to_math
 from oscillator import Oscillator
-import math
+
 class Canvas: 
     def __init__(self): 
         pygame.init()
-        self.PI = 3.14
         self.running = True
+        self.dragging = False 
         self.screen = pygame.display.set_mode(SCREEN_SIZE)
         pygame.display.set_caption("Simple Harmonic Oscillator")
+
+
 
         self.clock = pygame.time.Clock()
         self.fps = 60
         self.block_coordinate_origin = (-500,-200)
-
         self.oscillator = Oscillator((0,0), 20, 1, self.block_coordinate_origin, (100,100))
 
 
@@ -23,6 +24,13 @@ class Canvas:
         for event in pygame.event.get(): 
             if event.type == pygame.QUIT: 
                 self.running = False
+            elif event.type == pygame.MOUSEBUTTONDOWN and self.oscillator.is_clicked(event.pos): 
+                self.dragging = True
+            elif event.type == pygame.MOUSEBUTTONUP: 
+                self.dragging = False 
+            elif event.type == pygame.MOUSEMOTION and self.dragging: 
+                self.oscillator.set_pos(event.pos)
+
     def update(self):
         self.oscillator.move() 
     def render(self): 
@@ -45,7 +53,6 @@ class Canvas:
             to_screen((600,self.block_coordinate_origin[1])), 
             1
         )
-
 
         pygame.display.flip()
         self.clock.tick(self.fps)
