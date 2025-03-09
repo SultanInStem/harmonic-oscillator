@@ -16,6 +16,7 @@ class Canvas:
 
         self.clock = pygame.time.Clock()
         self.fps = 60
+        self.t = 0 
         self.block_coordinate_origin = (-500,-200)
         self.oscillator = Oscillator((0,0), 20, 1, self.block_coordinate_origin, (100,100))
 
@@ -28,12 +29,14 @@ class Canvas:
                 self.dragging = True
             elif event.type == pygame.MOUSEBUTTONUP: 
                 self.dragging = False 
+                self.t = 0
             elif event.type == pygame.MOUSEMOTION and self.dragging: 
                 self.oscillator.set_pos(event.pos)
 
     def update(self):
+        self.t += 0.0167
         if self.dragging == False: 
-            self.oscillator.move() 
+            self.oscillator.move(self.t) 
     def render(self): 
         self.screen.fill((0,0,0))
 
