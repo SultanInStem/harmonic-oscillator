@@ -25,8 +25,8 @@ class Oscillator:
 
     def set_pos(self, point):
         p = to_math(point)
-        self.pos = (p[0]-self.equilibrium_pos[0], self.origin[1] + self.block_size[1]) 
-        self.amplitude = abs(p[0]-self.equilibrium_pos[0])
+        self.pos = (p[0], self.origin[1] + self.block_size[1]) 
+        self.amplitude = p[0] - self.equilibrium_pos[0]
     
     def is_clicked(self, point): 
         p = to_math(point)
