@@ -23,7 +23,7 @@ class Canvas:
 
 
         self.block_coordinate_origin = (-500,-200)
-        self.oscillator = Oscillator((0,0), spring_constant, mass, self.block_coordinate_origin, (100,100))
+        self.oscillator = Oscillator((0,0), spring_constant, mass, self.block_coordinate_origin, (75,75))
 
 
     def handle_events(self): 
