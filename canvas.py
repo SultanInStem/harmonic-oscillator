@@ -16,6 +16,7 @@ class Canvas:
         self.clock = pygame.time.Clock()
         self.dt = 1 / self.fps
         self.t = 0 
+        
         mass = 10 
         spring_constant = 40
 
@@ -27,6 +28,7 @@ class Canvas:
 
 
         self.block_coordinate_origin = (-650,-200)
+        self.coordinate_length = 1000
         self.oscillator = Oscillator((0,0), spring_constant, mass, self.block_coordinate_origin, (75,75))
 
 
