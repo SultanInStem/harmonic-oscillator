@@ -13,13 +13,17 @@ class Canvas:
         self.screen = pygame.display.set_mode(SCREEN_SIZE)
         pygame.display.set_caption("Simple Harmonic Oscillator")
 
-
-
         self.clock = pygame.time.Clock()
         self.dt = 1 / self.fps
         self.t = 0 
+
+        mass = float(input("Enter the mass of the block: ")) 
+        spring_constant = float(input("Enter the spring constant: "))
+
+
+
         self.block_coordinate_origin = (-500,-200)
-        self.oscillator = Oscillator((0,0), 20, 1, self.block_coordinate_origin, (100,100))
+        self.oscillator = Oscillator((0,0), spring_constant, mass, self.block_coordinate_origin, (100,100))
 
 
     def handle_events(self): 
