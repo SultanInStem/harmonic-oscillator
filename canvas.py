@@ -9,13 +9,14 @@ class Canvas:
         pygame.init()
         self.running = True
         self.dragging = False 
+        self.fps = 60
         self.screen = pygame.display.set_mode(SCREEN_SIZE)
         pygame.display.set_caption("Simple Harmonic Oscillator")
 
 
 
         self.clock = pygame.time.Clock()
-        self.fps = 60
+        self.dt = 1 / self.fps
         self.t = 0 
         self.block_coordinate_origin = (-500,-200)
         self.oscillator = Oscillator((0,0), 20, 1, self.block_coordinate_origin, (100,100))
@@ -34,7 +35,7 @@ class Canvas:
                 self.oscillator.set_pos(event.pos)
 
     def update(self):
-        self.t += 0.0167
+        self.t += self.dt
         if self.dragging == False: 
             self.oscillator.move(self.t) 
     def render(self): 
