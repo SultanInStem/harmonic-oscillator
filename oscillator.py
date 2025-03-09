@@ -27,8 +27,6 @@ class Oscillator:
         p = to_math(point)
         pos = self.pos 
         size = self.block_size
-        print(pos)
-        print(p)
         if p[0] >= pos[0] and p[0] <= pos[0] + size[0] and p[1] <= pos[1] and p[1] >= pos[1] - size[1]:
             return True
         return False 
