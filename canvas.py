@@ -3,6 +3,7 @@ import sys
 from config import SCREEN_SIZE
 from globals import to_screen, to_math
 from oscillator import Oscillator
+import math 
 
 class Canvas: 
     def __init__(self): 
@@ -28,7 +29,7 @@ class Canvas:
 
 
         self.block_coordinate_origin = (-650,-200)
-        self.coordinate_length = 400
+        self.coordinate_length = 420
         self.block_equilibrium_pos = (-100,0)
         self.oscillator = Oscillator((-100,0), spring_constant, mass, self.block_coordinate_origin, (75,75))
 
@@ -42,8 +43,10 @@ class Canvas:
                 self.t = 0
             elif event.type == pygame.MOUSEBUTTONUP: 
                 self.dragging = False 
-            elif event.type == pygame.MOUSEMOTION and self.dragging: 
+            elif event.type == pygame.MOUSEMOTION and self.dragging and to_math(event.pos)[0] >= self.block_coordinate_origin[0] and to_math(event.pos)[0] <= self.coordinate_length: 
+
                 self.oscillator.set_pos(event.pos)
+                
 
     def update(self):
         if self.dragging == False: 
@@ -76,6 +79,11 @@ class Canvas:
             to_screen((self.coordinate_length,self.block_coordinate_origin[1])), 
             1
         )
+        ### Draw a spring
+        # block_pos = self.oscillator.get_math_pos()
+        # for i in range(0,int(block_pos[0])+650,1):
+        #     y = 100*math.sin(5*2 * math.pi * i / block_pos[0])
+        #     pygame.draw.circle(self.screen, (2,0,255), to_screen((i,y)), 1, 0)
 
         pygame.display.flip()
         self.clock.tick(self.fps)

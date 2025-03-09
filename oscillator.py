@@ -35,6 +35,8 @@ class Oscillator:
         if p[0] >= pos[0] and p[0] <= pos[0] + size[0] and p[1] <= pos[1] and p[1] >= pos[1] - size[1]:
             return True
         return False 
+    def get_math_pos(self): 
+        return self.pos 
 
 
 
