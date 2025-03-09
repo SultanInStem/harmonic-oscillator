@@ -9,6 +9,8 @@ class Oscillator:
         self.origin = origin
         self.block_size = size 
         self.pos = (equilibrium_pos[0], origin[1] + self.block_size[1])
+        self.a = 0 
+        self.v = 0 
 
     def draw(self, screen): 
         ### Drawing the block 

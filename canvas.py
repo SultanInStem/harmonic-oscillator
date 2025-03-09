@@ -32,13 +32,21 @@ class Canvas:
                 self.oscillator.set_pos(event.pos)
 
     def update(self):
-        self.oscillator.move() 
+        if self.dragging == False: 
+            self.oscillator.move() 
     def render(self): 
         self.screen.fill((0,0,0))
 
         self.oscillator.draw(self.screen)
 
         ### Drawing coordinate for the block-spring system 
+        pygame.draw.circle(
+            self.screen, 
+            (255,0,0), 
+            to_screen((0,0)),
+            4,
+            0
+        )
         pygame.draw.line(
             self.screen, 
             (255,255,255), 
