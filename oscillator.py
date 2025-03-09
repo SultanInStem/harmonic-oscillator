@@ -20,13 +20,13 @@ class Oscillator:
         pygame.draw.rect(screen, (255,0,0),(screen_x, screen_y, self.block_size[0], self.block_size[1]), 0)
 
     def move(self, t): 
-        x = self.amplitude * math.cos(self.omega * t)
+        x = self.amplitude * math.cos(self.omega * t) + self.equilibrium_pos[0]
         self.pos = (x, self.pos[1])
 
     def set_pos(self, point):
         p = to_math(point)
-        self.pos = (p[0], self.origin[1] + self.block_size[1]) 
-        self.amplitude = p[0]
+        self.pos = (p[0]-self.equilibrium_pos[0], self.origin[1] + self.block_size[1]) 
+        self.amplitude = abs(p[0]-self.equilibrium_pos[0])
     
     def is_clicked(self, point): 
         p = to_math(point)
@@ -35,7 +35,6 @@ class Oscillator:
         if p[0] >= pos[0] and p[0] <= pos[0] + size[0] and p[1] <= pos[1] and p[1] >= pos[1] - size[1]:
             return True
         return False 
-
 
 
 

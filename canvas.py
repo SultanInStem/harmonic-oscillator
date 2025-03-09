@@ -28,8 +28,9 @@ class Canvas:
 
 
         self.block_coordinate_origin = (-650,-200)
-        self.coordinate_length = 1000
-        self.oscillator = Oscillator((0,0), spring_constant, mass, self.block_coordinate_origin, (75,75))
+        self.coordinate_length = 400
+        self.block_equilibrium_pos = (-100,0)
+        self.oscillator = Oscillator((-100,0), spring_constant, mass, self.block_coordinate_origin, (75,75))
 
 
     def handle_events(self): 
@@ -57,7 +58,7 @@ class Canvas:
         pygame.draw.circle(
             self.screen, 
             (255,0,0), 
-            to_screen((0,0)),
+            to_screen(self.block_equilibrium_pos),
             4,
             0
         )
@@ -72,7 +73,7 @@ class Canvas:
             self.screen, 
             (255,255,255), 
             to_screen(self.block_coordinate_origin), 
-            to_screen((600,self.block_coordinate_origin[1])), 
+            to_screen((self.coordinate_length,self.block_coordinate_origin[1])), 
             1
         )
 
