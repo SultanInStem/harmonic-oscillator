@@ -32,15 +32,15 @@ class Canvas:
                 self.running = False
             elif event.type == pygame.MOUSEBUTTONDOWN and self.oscillator.is_clicked(event.pos): 
                 self.dragging = True
+                self.t = 0
             elif event.type == pygame.MOUSEBUTTONUP: 
                 self.dragging = False 
-                self.t = 0
             elif event.type == pygame.MOUSEMOTION and self.dragging: 
                 self.oscillator.set_pos(event.pos)
 
     def update(self):
-        self.t += self.dt
         if self.dragging == False: 
+            self.t += self.dt
             self.oscillator.move(self.t) 
     def render(self): 
         self.screen.fill((0,0,0))
