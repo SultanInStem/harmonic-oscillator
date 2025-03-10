@@ -38,14 +38,28 @@ class Canvas:
         self.oscillator.set_amp(0)
         self.t = 0
     def draw_spring(self): 
-        n = 4 # number of crests 
+        n = 8 # number of crests 
         amp = 50 # amplitude 
         spacing = 5 # horizontal distance between plotted points
         start = self.block_coordinate_origin 
         end = self.oscillator.get_math_pos()
+        x1 = start[0]
+        y1 = start[1] 
+        x2 = end[0]
+        y2 = end[1]
         d = end[0] - start[0]
-        if d <= 0: return 
-        
+        if d <= 0: return # avoids division by zero
+
+        frequency = (n * math.pi) / d
+        mid_y = (y1 + y2) / 2  # Midpoint for vertical centering
+
+        prev_x, prev_y = x1, mid_y + amp * math.sin(0)  # First point
+
+        for x in range(int(x1), int(x2), spacing):
+            y = mid_y + amp * math.sin(frequency * (x - x1))
+            pygame.draw.line(self.screen, (0, 255, 255), to_screen((prev_x, prev_y)), to_screen((x, y)), 2)
+            prev_x, prev_y = x, y
+
 
 
 
@@ -97,7 +111,7 @@ class Canvas:
             2
         )
         ### Draw a spring
-    
+        self.draw_spring()
 
 
         pygame.display.flip()
