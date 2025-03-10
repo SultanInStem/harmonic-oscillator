@@ -117,7 +117,6 @@ class Canvas:
         ### Draw a spring
         self.draw_spring()
 
-
         pygame.display.flip()
         self.clock.tick(self.fps)
 
