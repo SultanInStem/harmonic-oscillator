@@ -21,10 +21,10 @@ class Canvas:
         mass = 10 
         spring_constant = 40
 
-        # user_choice = input("Do you want to configure the simulation? y-yes or n-no ")
-        # if user_choice.lower() == "y": 
-        #     mass = float(input("Enter the mass of the block: ")) 
-        #     spring_constant = float(input("Enter the spring constant: "))
+        user_choice = input("Do you want to configure the simulation? y-yes or n-no ")
+        if user_choice.lower() == "y": 
+            mass = float(input("Enter the mass of the block: ")) 
+            spring_constant = float(input("Enter the spring constant: "))
 
         
 
