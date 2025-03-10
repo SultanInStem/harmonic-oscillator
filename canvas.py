@@ -72,8 +72,12 @@ class Canvas:
                 self.t = 0
             elif event.type == pygame.MOUSEBUTTONUP: 
                 self.dragging = False 
-            elif event.type == pygame.MOUSEMOTION and self.dragging and to_math(event.pos)[0] >= self.block_coordinate_origin[0] and to_math(event.pos)[0] <= self.coordinate_length - self.oscillator.get_size(): 
-                self.oscillator.set_pos(event.pos)
+            elif event.type == pygame.MOUSEMOTION and self.dragging: 
+                size = self.oscillator.get_size()
+                event_pos = to_math(event.pos)
+                origin = self.block_coordinate_origin
+                if event_pos[0] >= origin[0] and event_pos[0] <= self.coordinate_length - size: 
+                    self.oscillator.set_pos(event.pos)
             elif event.type == pygame.KEYDOWN: 
                 if event.key == pygame.K_r: 
                     self.reset()
