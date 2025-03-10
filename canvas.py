@@ -21,10 +21,10 @@ class Canvas:
         mass = 10 
         spring_constant = 40
 
-        user_choice = input("Do you want to configure the simulation? y-yes or n-no ")
-        if user_choice.lower() == "y": 
-            mass = float(input("Enter the mass of the block: ")) 
-            spring_constant = float(input("Enter the spring constant: "))
+        # user_choice = input("Do you want to configure the simulation? y-yes or n-no ")
+        # if user_choice.lower() == "y": 
+        #     mass = float(input("Enter the mass of the block: ")) 
+        #     spring_constant = float(input("Enter the spring constant: "))
 
 
 
@@ -58,13 +58,6 @@ class Canvas:
         self.oscillator.draw(self.screen)
 
         ### Drawing coordinate for the block-spring system 
-        pygame.draw.circle(
-            self.screen, 
-            (255,0,0), 
-            to_screen(self.block_equilibrium_pos),
-            4,
-            0
-        )
         pygame.draw.line(
             self.screen, 
             (255,255,255), 
@@ -79,11 +72,15 @@ class Canvas:
             to_screen((self.coordinate_length,self.block_coordinate_origin[1])), 
             1
         )
+        pygame.draw.line(
+            self.screen, 
+            (0,0,255), 
+            to_screen((self.block_equilibrium_pos[0],-250)), 
+            to_screen((self.block_equilibrium_pos[0],-150)),
+            1
+        )
         ### Draw a spring
-        # block_pos = self.oscillator.get_math_pos()
-        # for i in range(0,int(block_pos[0])+650,1):
-        #     y = 100*math.sin(5*2 * math.pi * i / block_pos[0])
-        #     pygame.draw.circle(self.screen, (2,0,255), to_screen((i,y)), 1, 0)
+
 
         pygame.display.flip()
         self.clock.tick(self.fps)
