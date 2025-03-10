@@ -26,12 +26,12 @@ class Canvas:
         #     mass = float(input("Enter the mass of the block: ")) 
         #     spring_constant = float(input("Enter the spring constant: "))
 
-
+        
 
         self.block_coordinate_origin = (-650,-200)
         self.coordinate_length = 420
         self.block_equilibrium_pos = (-100,0)
-        self.oscillator = Oscillator((-100,0), spring_constant, mass, self.block_coordinate_origin, (75,75))
+        self.oscillator = Oscillator((-100,0), spring_constant, mass, self.block_coordinate_origin, 75)
 
 
     def handle_events(self): 
@@ -43,8 +43,7 @@ class Canvas:
                 self.t = 0
             elif event.type == pygame.MOUSEBUTTONUP: 
                 self.dragging = False 
-            elif event.type == pygame.MOUSEMOTION and self.dragging and to_math(event.pos)[0] >= self.block_coordinate_origin[0] and to_math(event.pos)[0] <= self.coordinate_length: 
-
+            elif event.type == pygame.MOUSEMOTION and self.dragging and to_math(event.pos)[0] >= self.block_coordinate_origin[0] and to_math(event.pos)[0] <= self.coordinate_length - self.oscillator.get_size(): 
                 self.oscillator.set_pos(event.pos)
                 
 

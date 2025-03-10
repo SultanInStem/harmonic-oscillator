@@ -8,8 +8,8 @@ class Oscillator:
         self.spring_const = spring_constant 
         self.m = block_mass
         self.origin = origin
-        self.block_size = size 
-        self.pos = (equilibrium_pos[0], origin[1] + self.block_size[1])
+        self.size = size 
+        self.pos = (equilibrium_pos[0], origin[1] + size)
         self.omega = math.sqrt(spring_constant / block_mass)
         self.amplitude = 0
 
@@ -17,7 +17,7 @@ class Oscillator:
         ### Drawing the block 
         screen_x = to_screen(self.pos)[0]
         screen_y = to_screen(self.pos)[1]
-        pygame.draw.rect(screen, (255,0,0),(screen_x, screen_y, self.block_size[0], self.block_size[1]), 0)
+        pygame.draw.rect(screen, (255,0,0),(screen_x, screen_y, self.size, self.size), 0)
 
     def move(self, t): 
         x = self.amplitude * math.cos(self.omega * t) + self.equilibrium_pos[0]
@@ -25,18 +25,19 @@ class Oscillator:
 
     def set_pos(self, point):
         p = to_math(point)
-        self.pos = (p[0], self.origin[1] + self.block_size[1]) 
+        self.pos = (p[0], self.origin[1] + self.size) 
         self.amplitude = p[0] - self.equilibrium_pos[0]
     
     def is_clicked(self, point): 
         p = to_math(point)
         pos = self.pos 
-        size = self.block_size
-        if p[0] >= pos[0] and p[0] <= pos[0] + size[0] and p[1] <= pos[1] and p[1] >= pos[1] - size[1]:
+        if p[0] >= pos[0] and p[0] <= pos[0] + self.size and p[1] <= pos[1] and p[1] >= pos[1] - self.size:
             return True
         return False 
     def get_math_pos(self): 
         return self.pos 
+    def get_size(self): 
+        return self.size
 
 
 
