@@ -40,7 +40,7 @@ class Canvas:
     def draw_spring(self): 
         n = 8 # number of crests 
         amp = 50 # amplitude 
-        spacing = 5 # horizontal distance between plotted points
+        spacing = 1 # horizontal distance between plotted points
         start = self.block_coordinate_origin 
         end = self.oscillator.get_math_pos()
         x1 = start[0]
