@@ -37,6 +37,17 @@ class Canvas:
         self.oscillator.set_pos(self.block_equilibrium_pos)
         self.oscillator.set_amp(0)
         self.t = 0
+    def draw_spring(self): 
+        n = 4 # number of crests 
+        amp = 50 # amplitude 
+        spacing = 5 # horizontal distance between plotted points
+        start = self.block_coordinate_origin 
+        end = self.oscillator.get_math_pos()
+        d = end[0] - start[0]
+        if d <= 0: return 
+        
+
+
 
     def handle_events(self): 
         for event in pygame.event.get(): 
@@ -86,6 +97,7 @@ class Canvas:
             2
         )
         ### Draw a spring
+    
 
 
         pygame.display.flip()
