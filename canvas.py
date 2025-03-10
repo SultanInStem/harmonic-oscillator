@@ -33,6 +33,9 @@ class Canvas:
         self.block_equilibrium_pos = (-100,0)
         self.oscillator = Oscillator((-100,0), spring_constant, mass, self.block_coordinate_origin, 75)
 
+    def reset(self): 
+        self.oscillator.set_pos(self.block_equilibrium_pos)
+        self.t = 0
 
     def handle_events(self): 
         for event in pygame.event.get(): 
@@ -45,6 +48,9 @@ class Canvas:
                 self.dragging = False 
             elif event.type == pygame.MOUSEMOTION and self.dragging and to_math(event.pos)[0] >= self.block_coordinate_origin[0] and to_math(event.pos)[0] <= self.coordinate_length - self.oscillator.get_size(): 
                 self.oscillator.set_pos(event.pos)
+            elif event.type == pygame.KEYDOWN: 
+                if event.key == pygame.K_r: 
+                    self.reset()
                 
 
     def update(self):
