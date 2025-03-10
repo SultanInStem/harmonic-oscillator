@@ -35,6 +35,7 @@ class Canvas:
 
     def reset(self): 
         self.oscillator.set_pos(self.block_equilibrium_pos)
+        self.oscillator.set_amp(0)
         self.t = 0
 
     def handle_events(self): 

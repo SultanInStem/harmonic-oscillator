@@ -12,7 +12,8 @@ class Oscillator:
         self.pos = (equilibrium_pos[0], origin[1] + size)
         self.omega = math.sqrt(spring_constant / block_mass)
         self.amplitude = 0
-
+    def set_amp(self, a):
+        self.amplitude = a
     def draw(self, screen): 
         ### Drawing the block 
         screen_x = to_screen(self.pos)[0]
