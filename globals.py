@@ -12,3 +12,5 @@ def to_screen(point):
     return (screen_x, screen_y)
 
 
+GREEN_COLOR = (9, 121, 105)
+

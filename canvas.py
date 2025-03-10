@@ -1,7 +1,7 @@
 import pygame 
 import sys 
 from config import SCREEN_SIZE
-from globals import to_screen, to_math
+from globals import to_screen, to_math, GREEN_COLOR
 from oscillator import Oscillator
 import math 
 
@@ -80,10 +80,10 @@ class Canvas:
         )
         pygame.draw.line(
             self.screen, 
-            (0,0,255), 
+            GREEN_COLOR, 
             to_screen((self.block_equilibrium_pos[0],-250)), 
             to_screen((self.block_equilibrium_pos[0],-150)),
-            1
+            2
         )
         ### Draw a spring
 
